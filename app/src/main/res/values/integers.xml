@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="slide_animation_duration">300</integer>
+    <integer name="anim_length">500</integer>
+    <integer name="anim_length_half">250</integer>
+    <integer name="radius">7</integer>
+</resources>

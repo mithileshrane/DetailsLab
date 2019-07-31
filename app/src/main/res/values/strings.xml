@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Laboratory</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_login">Login,\nWelcome Back</string>
+    <string name="title_activity_dash_board">DashBoardActivity</string>
+    <string name="txt_lab_list">Labs Wise</string>
+
+</resources>
