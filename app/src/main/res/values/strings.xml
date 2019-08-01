@@ -8,5 +8,8 @@
     <string name="txt_login">Login,\nWelcome Back</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="txt_lab_list">Labs Wise</string>
+    <string name="txt_invalid_username">Invalid Username</string>
+    <string name="txt_invalid_password">Invalid Password</string>
+    <string name="txt_invalid_password_length">Password must be more lenght 5</string>
 
 </resources>

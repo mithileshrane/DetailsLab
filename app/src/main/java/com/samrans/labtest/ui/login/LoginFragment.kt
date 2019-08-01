@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.samrans.labtest.R
 import com.samrans.labtest.ui.lablist.DashBoardActivity
@@ -30,10 +31,35 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         fbNext?.setOnClickListener {
-            val intent = Intent(activity, DashBoardActivity::class.java)
+            if(validateLogin(edt_username?.text.toString(),edt_password?.text.toString())){
+                val intent = Intent(activity, DashBoardActivity::class.java)
 
-            startActivity(intent)
-            activity!!.finish()
+                startActivity(intent)
+                activity!!.finish()
+            }
+
+        }
+    }
+
+    private fun validateLogin(edt_username: String, edt_password: String): Boolean {
+        when{
+            edt_username.isEmpty()->{
+                Toast.makeText(activity!!,R.string.txt_invalid_username,Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+            edt_password.isEmpty()->{
+                Toast.makeText(activity!!,R.string.txt_invalid_password,Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+            edt_password.length<5->{
+                Toast.makeText(activity!!,R.string.txt_invalid_password_length,Toast.LENGTH_SHORT).show()
+                return false
+            }
+            else->{
+                return true
+            }
         }
     }
 
