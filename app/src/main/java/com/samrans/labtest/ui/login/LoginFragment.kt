@@ -12,13 +12,22 @@ import android.widget.Toast
 import com.samrans.labtest.R
 import com.samrans.labtest.ui.lablist.DashBoardActivity
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.android.x.kodein
 
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(),KodeinAware {
+    /**
+     * A Kodein Aware class must be within reach of a [Kodein] object.
+     */
+    override val kodein by kodein()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +48,8 @@ class LoginFragment : Fragment() {
             }
 
         }
+
+
     }
 
     private fun validateLogin(edt_username: String, edt_password: String): Boolean {

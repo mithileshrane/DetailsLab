@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samrans.labtest.R
+import com.samrans.labtest.responseModel.DetailList
 
 class LabListAdapter(val filteredList:ArrayList<DetailList>):
     RecyclerView.Adapter<LabListAdapter.DataHolder>() {

@@ -1,7 +1,5 @@
 package com.samrans.labtest.ui.lablist
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.samrans.labtest.R
+import com.samrans.labtest.responseModel.DetailList
 import com.samrans.labtest.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_lab_listragment.*
 
@@ -52,27 +51,27 @@ class LabListragment : BaseFragment() {
     }
 
     private fun createList() {
-        val detailList1=DetailList()
+        val detailList1= DetailList()
         detailList1.title="Lab 1"
         detailList1.status="8.30 am"
         items.add(detailList1)
 
-        val detailList2=DetailList()
+        val detailList2= DetailList()
         detailList2.title="Lab 2"
         detailList2.status="9.30 am"
         items.add(detailList2)
 
-        val detailList3=DetailList()
+        val detailList3= DetailList()
         detailList3.title="Lab 3"
         detailList3.status="10.00 am"
         items.add(detailList3)
 
-        val detailList4=DetailList()
+        val detailList4= DetailList()
         detailList4.title="Lab 4"
         detailList4.status="11.30 am"
         items.add(detailList4)
 
-        val detailList5=DetailList()
+        val detailList5= DetailList()
         detailList5.title="Lab 5"
         detailList5.status="1.30 pm"
         items.add(detailList5)
