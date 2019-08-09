@@ -8,14 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 import com.samrans.labtest.R
+import com.samrans.labtest.ui.base.KodeinViewModelFactory
 import com.samrans.labtest.ui.lablist.DashBoardActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 
 /**
@@ -27,6 +31,9 @@ class LoginFragment : Fragment(),KodeinAware {
      * A Kodein Aware class must be within reach of a [Kodein] object.
      */
     override val kodein by kodein()
+    lateinit var mViewModel: LoginViewModel
+    val factory: LoginViewModelFactory by instance()
+
 
 
     override fun onCreateView(
@@ -39,6 +46,10 @@ class LoginFragment : Fragment(),KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+//        KodeinViewModelFactory(kodein)
+        mViewModel=ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
+
         fbNext?.setOnClickListener {
             if(validateLogin(edt_username?.text.toString(),edt_password?.text.toString())){
                 val intent = Intent(activity, DashBoardActivity::class.java)

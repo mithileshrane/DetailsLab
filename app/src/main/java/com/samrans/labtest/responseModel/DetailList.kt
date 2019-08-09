@@ -1,5 +1,6 @@
 package com.samrans.labtest.responseModel
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,6 +9,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 class DetailList {
+    @NonNull
     @PrimaryKey(autoGenerate = false)
     var labId:String?=null
 

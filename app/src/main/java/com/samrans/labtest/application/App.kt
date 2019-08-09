@@ -2,12 +2,14 @@ package com.samrans.labtest.application
 
 import android.app.Application
 import android.content.Context
+import com.samrans.labtest.ui.login.LoginViewModelFactory
 import com.samrans.labtest.utils.NetworkConnectionInterceptor
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
 class App:Application() , KodeinAware {
@@ -17,6 +19,7 @@ class App:Application() , KodeinAware {
         import(androidXModule(this@App))
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
+        bind() from provider { LoginViewModelFactory(instance()) }
 
     }
 
