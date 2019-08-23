@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
 import androidx.annotation.NonNull
 import androidx.appcompat.widget.Toolbar
@@ -58,6 +59,66 @@ abstract class BaseFragment : Fragment(), View.OnClickListener , OnUpdateView {
     override fun updateView(position: Int) {
 //       AppUtils.showLog("Base","updateView" + position)
     }
+    fun replaceFragmentSafelyInActivity(
+        fragment: Fragment,
+        tag: String,
+        @IdRes containerViewId: Int,
+        bundle: Bundle? = null,
+        addBackStack: Boolean = false,
+        allowStateLoss: Boolean = false,
+        @AnimRes enterAnimation: Int = 0,
+        @AnimRes exitAnimation: Int = 0,
+        @AnimRes popEnterAnimation: Int = 0,
+        @AnimRes popExitAnimation: Int = 0
+    ) {
+
+        fragment.setArguments(bundle)
+        val ft = activity!!.supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(enterAnimation, exitAnimation, popEnterAnimation, popExitAnimation)
+            .replace(containerViewId, fragment, tag)
+        if (addBackStack) {
+            ft.addToBackStack(tag)
+        }
+        if (!activity!!.supportFragmentManager.isStateSaved) {
+            ft.commit()
+        } else if (allowStateLoss) {
+            ft.commitAllowingStateLoss()
+        }
+    }
+
+    /**
+     * Method to replace the fragment. The [fragment] is added to the container view with id
+     * [containerViewId] and a [tag]. The operation is performed by the supportFragmentManager.
+     */
+    fun addFragmentSafelyInActivity(
+        fragment: Fragment,
+        tag: String,
+        @IdRes containerViewId: Int,
+        bundle: Bundle? = null,
+        addBackStack: Boolean = false,
+        allowStateLoss: Boolean = false,
+        @AnimRes enterAnimation: Int = 0,
+        @AnimRes exitAnimation: Int = 0,
+        @AnimRes popEnterAnimation: Int = 0,
+        @AnimRes popExitAnimation: Int = 0
+    ) {
+
+        fragment.setArguments(bundle)
+        val ft = activity!!.supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(enterAnimation, exitAnimation, popEnterAnimation, popExitAnimation)
+            .add(containerViewId, fragment, tag)
+        if (addBackStack) {
+            ft.addToBackStack(tag)
+        }
+        if (!activity!!.supportFragmentManager.isStateSaved) {
+            ft.commit()
+        } else if (allowStateLoss) {
+            ft.commitAllowingStateLoss()
+        }
+    }
+
     public interface OnFragmentInteractionListener{
 
         fun addNewsFragment(@IdRes containerViewId : Int,

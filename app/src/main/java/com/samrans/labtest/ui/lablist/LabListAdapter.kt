@@ -7,8 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samrans.labtest.R
 import com.samrans.labtest.responseModel.DetailList
+import com.samrans.labtest.ui.listeners.OnClickListenerWithPositionType
 
-class LabListAdapter(val filteredList:ArrayList<DetailList>):
+class LabListAdapter(val filteredList:ArrayList<DetailList>
+                     ,val listener: OnClickListenerWithPositionType):
     RecyclerView.Adapter<LabListAdapter.DataHolder>() {
 
     class DataHolder(itemViewHolder: View) : RecyclerView.ViewHolder(itemViewHolder)  {
@@ -29,5 +31,9 @@ class LabListAdapter(val filteredList:ArrayList<DetailList>):
         val labListModel = filteredList.get(position)
         holder.tv_lab_title.text = labListModel.mTitle
         holder.tv_Status.text = labListModel.mStatus
+
+        holder.itemView.setOnClickListener {
+            listener.onClickItem(labListModel, -1, R.layout.item_lab)
+        }
     }
 }

@@ -11,5 +11,6 @@
     <string name="txt_invalid_username">Invalid Username</string>
     <string name="txt_invalid_password">Invalid Password</string>
     <string name="txt_invalid_password_length">Password must be more length 5</string>
+    <string name="txt_buy_offer">Buy Offer</string>
 
 </resources>

@@ -1,4 +1,5 @@
-package com.samrans.labtest.ui.lablist
+package com.samrans.labtest.ui.labselect
+
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,23 +7,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.samrans.labtest.R
 import com.samrans.labtest.responseModel.DetailList
 import com.samrans.labtest.ui.base.BaseFragment
-import com.samrans.labtest.ui.labselect.LabSelectActivity
+import com.samrans.labtest.ui.detailsservice.LabDetailsSelectFragment
+import com.samrans.labtest.ui.lablist.LabListAdapter
 import com.samrans.labtest.ui.listeners.OnClickListenerWithPositionType
-import kotlinx.android.synthetic.main.fragment_lab_listragment.*
+import kotlinx.android.synthetic.main.activity_lab_select.*
+import kotlinx.android.synthetic.main.fragment_lab_select.*
 
 /**
  * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [LabListragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- *
  */
-class LabListragment : BaseFragment(), OnClickListenerWithPositionType {
+class LabSelectFragment : BaseFragment(),OnClickListenerWithPositionType {
+
+    private lateinit var labListAdapter: LabSelectListAdapter
+    private var items = ArrayList<DetailList>()
+
 
 
     override fun onCreateView(
@@ -30,23 +34,20 @@ class LabListragment : BaseFragment(), OnClickListenerWithPositionType {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lab_listragment, container, false)
+        return inflater.inflate(R.layout.fragment_lab_select, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity!! as LabSelectActivity).toolbar_title.setText("Lab 1")
         showData()
     }
-
-    private lateinit var labListAdapter: LabListAdapter
-    private var items = ArrayList<DetailList>()
-
     private fun showData() {
-        val mLayoutManager = LinearLayoutManager(activity!!)
+        val mLayoutManager = GridLayoutManager(activity!!,2,
+            LinearLayoutManager.VERTICAL,false)
 
         createList()
-        labListAdapter = LabListAdapter(items, this)
+        labListAdapter = LabSelectListAdapter(items, this)
 
         recylView?.layoutManager = mLayoutManager
         recylView?.adapter = labListAdapter
@@ -57,8 +58,11 @@ class LabListragment : BaseFragment(), OnClickListenerWithPositionType {
             R.layout.item_lab -> {
                 when (postion) {
                     -1 -> {
-                        val intent = Intent(activity!!, LabSelectActivity::class.java)
-                        startActivity(intent)
+                       /* val intent = Intent(activity!!, LabSelectActivity::class.java)
+                        startActivity(intent)*/
+                        replaceFragmentSafelyInActivity(
+                            LabDetailsSelectFragment(),
+                            LabDetailsSelectFragment::class.java.simpleName!!,R.id.framContainerInner,null,true)
                     }
                 }
             }
@@ -93,6 +97,5 @@ class LabListragment : BaseFragment(), OnClickListenerWithPositionType {
 
 
     }
-
 
 }
