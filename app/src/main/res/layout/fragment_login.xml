@@ -4,90 +4,96 @@
         xmlns:tools="http://schemas.android.com/tools">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-                                                       android:layout_width="match_parent"
-                                                       android:background="@color/white"
-                                                       android:layout_height="match_parent"
-                                                       tools:context=".ui.login.LoginFragment">
-
+    <ScrollView
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:padding="@dimen/dimen_16dp"
-
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:background="@color/white"
+                android:layout_height="0dp"
+                tools:context=".ui.login.LoginFragment">
 
 
-            <TextView
-                    android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/dimen_16dp"
+
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_login"
-                    android:textSize="@dimen/dimen_24sp"
-                    android:text="@string/txt_login"
-                    android:textColor="@color/colorAccent"
-                    android:layout_marginTop="8dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputLayout"
-                    android:layout_marginTop="@dimen/dimen_32dp"
-                    android:id="@+id/til_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/txt_username"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_login"
-                    >
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:id="@+id/edt_username"
+                <TextView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                        android:id="@+id/tv_login"
+                        android:textSize="@dimen/dimen_24sp"
+                        android:text="@string/txt_login"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/txt_password"
-                    style="@style/TextInputLayout"
-                    app:errorEnabled="false"
-                    app:passwordToggleEnabled="true"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/til_username"
-                    >
-
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:layout_marginTop="@dimen/dimen_32dp"
+                        android:id="@+id/til_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/edt_password"
-                        android:inputType="textPassword"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                        android:hint="@string/txt_username"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_login"
+                        >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:id="@+id/edt_username"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_next_24dp"
-                    app:fabSize="auto"
-                    android:id="@+id/fbNext"
-                    app:tint="@color/white"
-                    app:backgroundTint="@color/colorPrimary"
-                    android:layout_marginTop="@dimen/dimen_16dp"
-                    app:layout_constraintTop_toBottomOf="@+id/til_password"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/txt_password"
+                        style="@style/TextInputLayout"
+                        app:errorEnabled="false"
+                        app:passwordToggleEnabled="true"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/til_username"
+                        >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edt_password"
+                            android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_next_24dp"
+                        app:fabSize="auto"
+                        android:id="@+id/fbNext"
+                        app:tint="@color/white"
+                        app:backgroundTint="@color/colorPrimary"
+                        android:layout_marginTop="@dimen/dimen_16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/til_password"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="8dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
