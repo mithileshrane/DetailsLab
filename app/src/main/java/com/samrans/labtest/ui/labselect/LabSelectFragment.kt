@@ -37,9 +37,14 @@ class LabSelectFragment : BaseFragment(),OnClickListenerWithPositionType {
         return inflater.inflate(R.layout.fragment_lab_select, container, false)
     }
 
+    var postion=""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity!! as LabSelectActivity).toolbar_title.setText("Lab 1")
+        if (arguments!=null){
+            if (arguments?.containsKey("POS")!!)
+                postion=arguments?.getString("POS")!!
+        }
+        (activity!! as LabSelectActivity).toolbar_title.setText(postion)
         showData()
     }
     private fun showData() {

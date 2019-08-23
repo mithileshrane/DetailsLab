@@ -58,6 +58,9 @@ class LabListragment : BaseFragment(), OnClickListenerWithPositionType {
                 when (postion) {
                     -1 -> {
                         val intent = Intent(activity!!, LabSelectActivity::class.java)
+                        if(item is DetailList){
+                        intent.putExtra("POS",item.mTitle)
+                        }
                         startActivity(intent)
                     }
                 }

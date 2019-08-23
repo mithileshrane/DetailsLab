@@ -24,9 +24,15 @@ class LabSelectActivity:BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
+        val fragment=LabSelectFragment()
 
+        if (intent!!.hasExtra("POS")){
+            val bundle=Bundle()
+            bundle.putString("POS",intent!!.getStringExtra("POS"))
+            fragment.arguments=bundle
+        }
 
-        replaceFragment(R.id.framContainerInner,LabSelectFragment(),
+        replaceFragment(R.id.framContainerInner,fragment,
             LabSelectFragment::class.java.simpleName!!,false)
     }
 
