@@ -27,7 +27,7 @@ class LabListAdapter(val filteredList:ArrayList<DetailList>):
 
     override fun onBindViewHolder(holder: LabListAdapter.DataHolder, position: Int) {
         val labListModel = filteredList.get(position)
-        holder.tv_lab_title.text = labListModel.title
-        holder.tv_Status.text = labListModel.status
+        holder.tv_lab_title.text = labListModel.mTitle
+        holder.tv_Status.text = labListModel.mStatus
     }
 }

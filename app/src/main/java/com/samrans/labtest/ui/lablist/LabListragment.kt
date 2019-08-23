@@ -52,28 +52,28 @@ class LabListragment : BaseFragment() {
 
     private fun createList() {
         val detailList1= DetailList()
-        detailList1.title="Lab 1"
-        detailList1.status="8.30 am"
+        detailList1.mTitle="Lab 1"
+        detailList1.mStatus="08.30 am"
         items.add(detailList1)
 
         val detailList2= DetailList()
-        detailList2.title="Lab 2"
-        detailList2.status="9.30 am"
+        detailList2.mTitle="Lab 2"
+        detailList2.mStatus="09.45 am"
         items.add(detailList2)
 
         val detailList3= DetailList()
-        detailList3.title="Lab 3"
-        detailList3.status="10.00 am"
+        detailList3.mTitle="Lab 3"
+        detailList3.mStatus="10.00 am"
         items.add(detailList3)
 
         val detailList4= DetailList()
-        detailList4.title="Lab 4"
-        detailList4.status="11.30 am"
+        detailList4.mTitle="Lab 4"
+        detailList4.mStatus="11.30 am"
         items.add(detailList4)
 
         val detailList5= DetailList()
-        detailList5.title="Lab 5"
-        detailList5.status="1.30 pm"
+        detailList5.mTitle="Lab 5"
+        detailList5.mStatus="01.30 pm"
         items.add(detailList5)
 
 

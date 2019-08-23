@@ -51,39 +51,22 @@ class LoginFragment : Fragment(),KodeinAware {
         mViewModel=ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
 
         fbNext?.setOnClickListener {
-            if(validateLogin(edt_username?.text.toString(),edt_password?.text.toString())){
+
+//            mViewModel.validateLoginLiveData.observe(this,object :{})
+//            if(mViewModel.validateLogin(edt_username?.text.toString(),edt_password?.text.toString())){
                 val intent = Intent(activity, DashBoardActivity::class.java)
 
                 startActivity(intent)
                 activity!!.finish()
-            }
+//            }
 
         }
 
 
     }
 
-    private fun validateLogin(edt_username: String, edt_password: String): Boolean {
-        when{
-            edt_username.isEmpty()->{
-                Toast.makeText(activity!!,R.string.txt_invalid_username,Toast.LENGTH_SHORT).show()
-                return false
-            }
 
-            edt_password.isEmpty()->{
-                Toast.makeText(activity!!,R.string.txt_invalid_password,Toast.LENGTH_SHORT).show()
-                return false
-            }
 
-            edt_password.length<5->{
-                Toast.makeText(activity!!,R.string.txt_invalid_password_length,Toast.LENGTH_SHORT).show()
-                return false
-            }
-            else->{
-                return true
-            }
-        }
-    }
 
 
 }
